@@ -25,13 +25,28 @@ export function handle_download_image(ascii_result: ASCII_Result | null) {
     lines.forEach((line, line_index) => {
       let x = 0;
 
-      const remaining_text = line.replace(/<[^>]*>/g, "");
-      if (remaining_text) {
-        ctx.fillStyle = "#ffffff";
-        for (let i = 0; i < remaining_text.length; i++) {
-          ctx.fillText(remaining_text[i], x * char_width, line_index * line_height);
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(`<div>${line}</div>`, "text/html");
+      const spans = doc.querySelectorAll("span");
+
+      if (spans.length > 0) {
+        spans.forEach((span) => {
+          const char = span.textContent || "";
+          const style = span.getAttribute("style") || "";
+
+          const color_match = style.match(/color:\s*rgb\((\d+),\s*(\d+),\s*(\d+)\)/);
+          if (color_match) {
+            ctx.fillStyle = `rgb(${color_match[1]}, ${color_match[2]}, ${color_match[3]})`;
+          } else {
+            ctx.fillStyle = "#ffffff";
+          }
+
+          ctx.fillText(char, x * char_width, line_index * line_height);
           x++;
-        }
+        });
+      } else {
+        ctx.fillStyle = "#ffffff";
+        ctx.fillText(line, 0, line_index * line_height);
       }
     });
   } else {
