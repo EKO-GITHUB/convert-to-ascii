@@ -31,3 +31,9 @@ export const DEFAULT_OPTIONS: Conversion_Options = {
   invert_colors: false,
   font_size: 12,
 };
+
+export const MAX_FILE_SIZE = 100 * 1024 * 1024;
+
+export const MAX_WIDTH = 200;
+
+export const SUPPORTED_FORMATS = ["image/jpeg", "image/png", "image/gif", "image/webp", "image/bmp"];
