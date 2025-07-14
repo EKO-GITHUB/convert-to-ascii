@@ -8,6 +8,8 @@ import { useMobile } from "@/hooks/useMobile";
 export function Footer() {
   const isMobile = useMobile();
 
+  const current_year = new Date().getFullYear();
+
   return (
     <div className="mx-auto w-full">
       <div className="m-4 flex flex-col items-center justify-between gap-1 rounded-2xl border border-white/10 bg-white p-2 shadow-xl backdrop-blur-lg sm:gap-4 md:flex-row">
@@ -24,7 +26,7 @@ export function Footer() {
               100% open source • Privacy-first • Client-side processing
             </span>
             <span>|</span>
-            <span>© 2025 Convert2ASCII. All rights reserved.</span>
+            <span>© {current_year} Convert2ASCII. All rights reserved.</span>
           </div>
         )}
 
