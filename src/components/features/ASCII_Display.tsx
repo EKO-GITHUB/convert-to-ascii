@@ -100,9 +100,10 @@ export default function ASCII_Display({ ascii_result }: { ascii_result?: ASCII_R
 
             <div
               ref={display_ref}
-              className="max-h-screen max-w-full overflow-auto rounded-lg bg-black p-4 font-mono leading-none text-white"
+              className="max-h-screen max-w-full overflow-auto rounded-lg bg-black p-4 font-mono text-white"
               style={{
                 fontSize: `${font_size}px`,
+                lineHeight: ascii_result.has_colors ? "1.2" : "1",
               }}
             >
               {ascii_result.has_colors ? (
@@ -111,11 +112,13 @@ export default function ASCII_Display({ ascii_result }: { ascii_result?: ASCII_R
                   style={{
                     transform: `scale(${zoom_level / 100})`,
                     transformOrigin: "top left",
+                    whiteSpace: "pre",
+                    fontFamily: "monospace",
                   }}
                 />
               ) : (
                 <pre
-                  className="whitespace-pre"
+                  className="whitespace-pre leading-none"
                   style={{
                     transform: `scale(${zoom_level / 100})`,
                     transformOrigin: "top left",
