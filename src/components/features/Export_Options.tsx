@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Copy, Download, FileText, Image } from "lucide-react";
+import { Check, Copy, Download, FileCode, FileText, Image } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ASCII_Result } from "@/types/ASCII_Result";
 import { copy_to_clipboard } from "@/lib/copy_to_clipboard";
 import { download_ascii_as_text } from "@/lib/download_ascii_as_text";
+import { download_ascii_as_html } from "@/lib/download_ascii_as_html";
 import { handle_download_image } from "@/lib/handle_image_download";
 
 export default function Export_Options({ ascii_result }: { ascii_result?: ASCII_Result | null }) {
@@ -40,6 +41,13 @@ export default function Export_Options({ ascii_result }: { ascii_result?: ASCII_
 
     const filename = `ascii_art_${Date.now()}`;
     download_ascii_as_text(plain_text, filename);
+  }
+
+  function handle_download_html() {
+    if (!ascii_result || !ascii_result.has_colors) return;
+
+    const filename = `ascii_art_${Date.now()}`;
+    download_ascii_as_html(ascii_result.text, filename);
   }
 
   const get_copy_button_content = () => {
@@ -111,14 +119,35 @@ export default function Export_Options({ ascii_result }: { ascii_result?: ASCII_
           {get_copy_button_content()}
         </Button>
 
-        <Button
-          onClick={handle_download_txt}
-          variant="outline"
-          className="w-full"
-        >
-          <FileText className="mr-2 h-4 w-4" />
-          Save as .txt
-        </Button>
+        {ascii_result.has_colors ? (
+          <div className={"grid grid-cols-2 gap-2"}>
+            <Button
+              onClick={handle_download_txt}
+              variant="outline"
+              className="w-full"
+            >
+              <FileText className="mr-2 h-4 w-4" />
+              Save as <span className={"bg-muted rounded-sm px-1 py-0.5 font-mono"}>TXT</span>
+            </Button>
+            <Button
+              onClick={handle_download_html}
+              variant="outline"
+              className="w-full"
+            >
+              <FileCode className="mr-2 h-4 w-4" />
+              Save as <span className={"bg-muted rounded-sm px-1 py-0.5 font-mono"}>HTML</span>
+            </Button>
+          </div>
+        ) : (
+          <Button
+            onClick={handle_download_txt}
+            variant="outline"
+            className="w-full"
+          >
+            <FileText className="mr-2 h-4 w-4" />
+            Save as .txt
+          </Button>
+        )}
 
         <Button
           onClick={() => {
