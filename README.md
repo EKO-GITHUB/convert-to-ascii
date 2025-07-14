@@ -7,7 +7,7 @@
   
   [**Try it now at convert2ascii.com**](https://convert2ascii.com/)
   
-  [![Version](https://img.shields.io/badge/version-1.0.2-blue.svg)](package.json)
+  [![Version](https://img.shields.io/badge/version-1.0.3-blue.svg)](package.json)
   [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 </div>
 
@@ -26,9 +26,7 @@
       </td>
     </tr>
   </table>
-  
-  <p><strong>🎨 View the colorful ASCII art:</strong> <a href="public/example_converted.html">example_converted.html</a></p>
-</div>
+  </div>
 
 ## ✨ Features
 
@@ -54,7 +52,7 @@
 
 ### ASCII Conversion Algorithm
 The conversion algorithm (`src/lib/ascii_converter.ts`) maps pixel brightness to ASCII characters. It includes:
-- Automatic aspect ratio correction (characters are ~1.5:1 height:width ratio)
+- Automatic aspect ratio correction (characters are at a 2:1 height:width ratio)
 - Color preservation for full-color ASCII art
 - Customizable character sets for different artistic styles
 
