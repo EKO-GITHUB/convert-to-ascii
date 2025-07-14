@@ -7,7 +7,7 @@
   
   [**Try it now at convert2ascii.com**](https://convert2ascii.com/)
   
-  [![Version](https://img.shields.io/badge/version-1.0.3-blue.svg)](package.json)
+  [![Version](https://img.shields.io/badge/version-1.0.4-blue.svg)](package.json)
   [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 </div>
 
