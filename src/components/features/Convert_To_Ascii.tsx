@@ -10,7 +10,7 @@ import Settings from "@/components/features/Settings";
 import Export_Options from "@/components/features/Export_Options";
 import ASCII_Display from "@/components/features/ASCII_Display";
 
-export default function ConvertToAscii() {
+export default function Convert_To_Ascii() {
   const [image_info, setImageInfo] = useState<Image_Info | null>(null);
   const [ascii_result, setAsciiResult] = useState<ASCII_Result | null>(null);
   const [conversion_options, setConversion_options] = useState<Conversion_Options>(DEFAULT_OPTIONS);
