@@ -6,7 +6,7 @@ import { ASCII_Result } from "@/types/ASCII_Result";
 import { Conversion_Options } from "@/types/Conversion_Options";
 import { DEFAULT_OPTIONS } from "@/lib/constants";
 import Image_Uploader from "@/components/features/Image_Uploader";
-import Settings from "@/components/features/Settings";
+import Settings from "@/components/features/settings/Settings";
 import Export_Options from "@/components/features/Export_Options";
 import ASCII_Display from "@/components/features/ASCII_Display";
 
@@ -30,7 +30,11 @@ export default function Convert_To_Ascii() {
           on_image_loaded={handle_image_loaded}
           current_image={image_info}
         />
-        <Settings />
+        <Settings
+          image_info={image_info}
+          options={conversion_options}
+          on_options_change={setConversion_options}
+        />
         <Export_Options />
       </div>
       <ASCII_Display />
