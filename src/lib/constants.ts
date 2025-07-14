@@ -34,6 +34,8 @@ export const DEFAULT_OPTIONS: Conversion_Options = {
 
 export const MAX_FILE_SIZE = 100 * 1024 * 1024;
 
+export const CHARACTER_ASPECT_RATIO = 0.666;
+
 export const MAX_WIDTH = 200;
 
 export const SUPPORTED_FORMATS = ["image/jpeg", "image/png", "image/gif", "image/webp", "image/bmp"];

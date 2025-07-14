@@ -1,6 +1,7 @@
 import { Image_Info } from "@/types/Image_Info";
 import { ASCII_Result } from "@/types/ASCII_Result";
 import { Conversion_Options } from "@/types/Conversion_Options";
+import { CHARACTER_ASPECT_RATIO } from "@/lib/constants";
 
 export function get_image_data(image_info: Image_Info, target_width: number): Promise<ImageData> {
   return new Promise((resolve, reject) => {
@@ -17,7 +18,7 @@ export function get_image_data(image_info: Image_Info, target_width: number): Pr
 
       const aspect_ratio = img.height / img.width;
       const width = Math.min(target_width, img.width);
-      const height = Math.round(width * aspect_ratio);
+      const height = Math.round(width * aspect_ratio * CHARACTER_ASPECT_RATIO);
 
       canvas.width = width;
       canvas.height = height;

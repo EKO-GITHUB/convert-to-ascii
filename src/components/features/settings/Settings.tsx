@@ -4,7 +4,7 @@ import { Settings as SettingsLucide } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Conversion_Options } from "@/types/Conversion_Options";
 import { Image_Info } from "@/types/Image_Info";
-import { CHARACTER_SETS, MAX_WIDTH } from "@/lib/constants";
+import { CHARACTER_ASPECT_RATIO, CHARACTER_SETS, MAX_WIDTH } from "@/lib/constants";
 import { Output_Width } from "@/components/features/settings/Output_Width";
 import { Color_Mode } from "@/components/features/settings/Color_Mode";
 import { Invert_Colors } from "@/components/features/settings/Invert_Colors";
@@ -57,7 +57,9 @@ export default function Settings({
     return current_set?.name || "Custom";
   }
 
-  const calculated_height = image_info ? Math.round((options.width / image_info.width) * image_info.height) : 0;
+  const calculated_height = image_info
+    ? Math.round((options.width / image_info.width) * image_info.height * CHARACTER_ASPECT_RATIO)
+    : 0;
 
   return (
     <Card>
