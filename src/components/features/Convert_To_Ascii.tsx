@@ -24,7 +24,7 @@ export default function Convert_To_Ascii() {
   }, []);
 
   return (
-    <div className={"grid grid-cols-1 gap-4 p-4 lg:grid-cols-2"}>
+    <div className={"container mx-auto grid grid-cols-1 gap-4 p-4 lg:grid-cols-2"}>
       <div className={"grid gap-4"}>
         <Image_Uploader
           on_image_loaded={handle_image_loaded}
