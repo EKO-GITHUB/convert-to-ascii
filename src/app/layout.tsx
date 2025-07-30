@@ -4,7 +4,6 @@ import "./globals.css";
 import Background from "@/components/reusable/Background";
 import { home_page_metadata } from "@/app/metadata";
 import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import React from "react";
 
 const geistSans = Geist({
@@ -29,7 +28,6 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Background />
         {children}
-        <SpeedInsights />
         <Analytics />
       </body>
     </html>
